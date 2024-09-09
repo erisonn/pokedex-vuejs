@@ -8,9 +8,9 @@ const { result, loading, error } = useQuery(GET_POKEMONS_QUERY)
 
 <template>
   <div class="ListPokemonPage">
-    <CardList v-if="!loading" :pokemons="result.getAllPokemon" />
+    <p v-if="loading">Loading...</p>
     <p v-else-if="error">Oops! Something went wrong.</p>
-    <p v-else>Loading...</p>
+    <CardList v-else :pokemons="result.getAllPokemon" />
   </div>
 </template>
 
