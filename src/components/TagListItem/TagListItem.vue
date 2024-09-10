@@ -14,18 +14,20 @@ const theme = ref({
   color: colors[type.name.toLowerCase()]
 })
 </script>
+
 <template>
   <div class="TagList-Item">
-    {{ type.name }}
+    {{ type.name.toUpperCase() }}
   </div>
 </template>
 
 <style scoped lang="scss">
+@import '/src/assets/main.scss';
 .TagList-Item {
-  margin-right: 5px;
-  padding: 3px 15px;
-  border-radius: 4px;
-
+  margin-right: 8px;
+  padding: 8px 15px;
+  border-radius: 8px;
   background-color: v-bind('theme.color');
+  color: $color-grey-dark;
 }
 </style>

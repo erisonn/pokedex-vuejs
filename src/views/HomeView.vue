@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { useQuery } from '@vue/apollo-composable'
 import { GET_POKEMONS_QUERY } from './query'
 import CardList from '@/components/CardList/CardList.vue'
@@ -19,5 +19,6 @@ const { result, loading, error } = useQuery(GET_POKEMONS_QUERY)
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 50px;
 }
 </style>

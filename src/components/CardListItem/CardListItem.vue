@@ -21,38 +21,52 @@ const { sprite, species, types } = props.pokemon
 
 <template>
   <div class="CardList-Item">
-    <div class="CardList-Item-ImgContainer">
-      <img loading="lazy" :src="sprite" aria-label="pokémon sprite" />
-    </div>
-    <h3>{{ capitalizeFirstLetter(species) }}</h3>
-    <div class="TagList">
-      <TagListItem v-for="type in types" :key="type.name" :type="type" />
+    <div class="CardList-Item-Container">
+      <div class="CardList-Item-ImgContainer">
+        <img loading="lazy" :src="sprite" aria-label="pokémon sprite" />
+      </div>
+      <h4>Nº001</h4>
+      <h2>{{ capitalizeFirstLetter(species) }}</h2>
+      <div class="TagList">
+        <TagListItem v-for="type in types" :key="type.name" :type="type" />
+      </div>
     </div>
   </div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
+@import '../../assets/main.scss';
 .CardList-Item {
-  width: 200px;
-  margin: 0 30px;
-  padding: 20px 5px;
-  .CardList-Item-ImgContainer {
-    img {
-      border-radius: 4px;
-      background-color: aliceblue;
-      padding: 30px 30px;
-      height: 150px;
-      width: 150px;
+  width: 300px;
+  height: 200px;
+  margin: 40px 10px;
+  background-color: $color-white;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: $box-shadow;
+  .CardList-Item-Container {
+    transform: translateY(-55px);
+    h4 {
+      margin-bottom: 10px;
+      color: $color-grey-light;
+    }
+    h2 {
+      margin-top: 5px;
+      margin-bottom: 15px;
+    }
+    .CardList-Item-ImgContainer {
+      img {
+        height: 85px;
+        width: 85px;
+      }
+    }
+    .TagList {
+      display: flex;
+      justify-content: center;
     }
   }
   &:hover {
     cursor: pointer;
-  }
-  h3 {
-    margin-bottom: 5px;
-  }
-  .TagList {
-    display: flex;
   }
 }
 </style>
