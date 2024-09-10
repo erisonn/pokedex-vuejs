@@ -1,0 +1,13 @@
+$color-main-background: #f5f7f8;
+$color-white: white;
+$color-black: rgb(59, 59, 59);
+$color-grey-light: rgb(102, 102, 102);
+$color-grey-dark: rgb(53, 53, 53);
+$box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+#app {
+  font-weight: bold;
+  background-color: $color-main-background;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: $color-black;
+}
