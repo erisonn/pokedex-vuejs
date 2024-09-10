@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { capitalizeFirstLetter } from '@/helpers/capitalizeFirstLetter'
 import TagListItem from '../TagListItem/TagListItem.vue'
+import { RouterLink } from 'vue-router'
 
 export interface Pokemon {
   sprite: string
@@ -16,11 +17,11 @@ interface Props {
 }
 
 const props = defineProps<Props>()
-const { sprite, species, types } = props.pokemon
+const { sprite, species, types, key } = props.pokemon
 </script>
 
 <template>
-  <div class="CardList-Item">
+  <RouterLink :to="'/pokemon/' + key" class="CardList-Item">
     <div class="CardList-Item-Container">
       <div class="CardList-Item-ImgContainer">
         <img loading="lazy" :src="sprite" aria-label="pokémon sprite" />
@@ -31,7 +32,7 @@ const { sprite, species, types } = props.pokemon
         <TagListItem v-for="type in types" :key="type.name" :type="type" />
       </div>
     </div>
-  </div>
+  </RouterLink>
 </template>
 
 <style scoped lang="scss">
@@ -44,6 +45,7 @@ const { sprite, species, types } = props.pokemon
   border-radius: 20px;
   text-align: center;
   box-shadow: $box-shadow;
+  text-decoration: none;
   .CardList-Item-Container {
     transform: translateY(-55px);
     h4 {
@@ -53,6 +55,7 @@ const { sprite, species, types } = props.pokemon
     h2 {
       margin-top: 5px;
       margin-bottom: 15px;
+      color: $color-black;
     }
     .CardList-Item-ImgContainer {
       img {
