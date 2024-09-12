@@ -6,6 +6,7 @@ import TagList from './TagList.vue'
 import AppLoading from './AppLoading.vue'
 import { capitalizeFirstLetter } from '@/helpers/capitalizeFirstLetter'
 import { watch } from 'vue'
+import RadarChart from './RadarChart.vue'
 
 const route = useRoute()
 const { result, loading, error, refetch } = useQuery(GET_POKEMON, {
@@ -39,6 +40,7 @@ watch(
         {{ result.getPokemon.flavorTexts[0].flavor }}
       </p>
       <h3>EV YIELDS</h3>
+      <RadarChart />
     </div>
   </div>
 </template>
