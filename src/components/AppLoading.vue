@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import LoadingIcon from '../Icons/LoadingIcon.vue'
+import LoadingIcon from './Icons/LoadingIcon.vue'
 </script>
 
 <template>

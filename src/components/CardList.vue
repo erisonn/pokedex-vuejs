@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import CardListItem from '../CardListItem/CardListItem.vue'
-import type { Pokemon } from '../CardListItem/CardListItem.vue'
+import CardListItem from './CardListItem.vue'
+import type { Pokemon } from './CardListItem.vue'
 
 interface Props {
   pokemons: Pokemon[]

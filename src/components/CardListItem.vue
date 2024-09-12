@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { capitalizeFirstLetter } from '@/helpers/capitalizeFirstLetter'
-import TagListItem from '../TagListItem/TagListItem.vue'
 import { RouterLink } from 'vue-router'
+import TagListItem from './TagListItem.vue'
+import { capitalizeFirstLetter } from '@/helpers/capitalizeFirstLetter'
 
 export interface Pokemon {
   sprite: string
@@ -36,7 +36,7 @@ const { sprite, species, types, key } = props.pokemon
 </template>
 
 <style scoped lang="scss">
-@import '../../assets/main.scss';
+@import '/src/assets/main.scss';
 .CardList-Item {
   width: 300px;
   height: 200px;
