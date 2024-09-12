@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useQuery } from '@vue/apollo-composable'
-import { GET_POKEMONS_QUERY } from '@/queries/query'
+import { GET_POKEMONS_QUERY } from '@/queries/getPokemons'
 import CardList from '@/components/CardList.vue'
 import PokemonCardBig from '@/components/PokemonCardBig.vue'
 import AppLoading from '@/components/AppLoading.vue'
