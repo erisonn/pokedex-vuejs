@@ -3,21 +3,21 @@ import { ref } from 'vue'
 import { colors } from '@/helpers/pokemonTypesColors'
 
 interface Props {
-  type: {
+  tag: {
     name: string
   }
 }
 
 const props = defineProps<Props>()
-const { type } = props
+const { tag } = props
 const theme = ref({
-  color: colors[type.name.toLowerCase()]
+  color: colors[tag.name.toLowerCase()]
 })
 </script>
 
 <template>
   <div class="TagList-Item">
-    {{ type.name.toUpperCase() }}
+    {{ tag.name.toUpperCase() }}
   </div>
 </template>
 
@@ -29,5 +29,6 @@ const theme = ref({
   border-radius: 8px;
   background-color: v-bind('theme.color');
   color: $color-grey-dark;
+  width: max-content;
 }
 </style>
