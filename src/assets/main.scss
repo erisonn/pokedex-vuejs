@@ -12,5 +12,19 @@ body {
     font-weight: bold;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: $color-black;
+    h4 {
+      color: $color-grey-light;
+      margin-bottom: 10px;
+    }
+    h2 {
+      color: $color-black;
+      margin-top: 5px;
+      margin-bottom: 15px;
+    }
+    p {
+      color: $color-grey-dark;
+      font-weight: normal;
+      font-size: 16px;
+    }
   }
 }
