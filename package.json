@@ -15,9 +15,11 @@
   "dependencies": {
     "@apollo/client": "^3.11.8",
     "@vue/apollo-composable": "^4.2.1",
+    "apexcharts": "^3.53.0",
     "graphql": "^16.9.0",
     "graphql-tag": "^2.12.6",
     "vue": "^3.4.29",
+    "vue-apexcharts": "^1.6.2",
     "vue-router": "^4.3.3"
   },
   "devDependencies": {
