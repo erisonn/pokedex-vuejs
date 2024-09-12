@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
-import TagListItem from './TagListItem.vue'
+import TagList from './TagList.vue'
 import { capitalizeFirstLetter } from '@/helpers/capitalizeFirstLetter'
 
 export interface Pokemon {
@@ -28,9 +28,7 @@ const { sprite, species, types, key } = props.pokemon
       </div>
       <h4>Nº001</h4>
       <h2>{{ capitalizeFirstLetter(species) }}</h2>
-      <div class="TagList">
-        <TagListItem v-for="type in types" :key="type.name" :type="type" />
-      </div>
+      <TagList :tags="types" />
     </div>
   </RouterLink>
 </template>
@@ -48,24 +46,11 @@ const { sprite, species, types, key } = props.pokemon
   text-decoration: none;
   .CardList-Item-Container {
     transform: translateY(-55px);
-    h4 {
-      margin-bottom: 10px;
-      color: $color-grey-light;
-    }
-    h2 {
-      margin-top: 5px;
-      margin-bottom: 15px;
-      color: $color-black;
-    }
     .CardList-Item-ImgContainer {
       img {
         height: 85px;
         width: 85px;
       }
-    }
-    .TagList {
-      display: flex;
-      justify-content: center;
     }
   }
   &:hover {
