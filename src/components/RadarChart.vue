@@ -1,7 +1,20 @@
 <script setup lang="ts">
+interface Props {
+  chartId: string
+  categories: string[]
+  series: {
+    name: string
+    data: number[]
+  }[]
+  height: string
+  width: string
+}
+const props = defineProps<Props>()
+const { chartId, categories, series, height, width } = props
+// categories and series data array must be in the same order
 const options = {
   chart: {
-    id: 'pokemon-evYields-chart'
+    id: chartId
   },
   yaxis: {
     show: false,
@@ -10,23 +23,17 @@ const options = {
     max: 3
   },
   xaxis: {
-    categories: ['HP', 'Attack', 'Defense', 'Speed', 'Sp. Def', 'Sp. Atk']
+    categories: categories
   }
 }
-const series = [
-  {
-    name: '',
-    data: [0, 0, 0, 0, 0, 1]
-  }
-]
 </script>
 
 <template>
   <div class="RadarChart">
     <apexchart
       type="radar"
-      width="300"
-      height="300"
+      :width="width"
+      :height="height"
       :series="series"
       :options="options"
     ></apexchart>
