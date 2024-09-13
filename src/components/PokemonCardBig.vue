@@ -8,6 +8,25 @@ import { capitalizeFirstLetter } from '@/helpers/capitalizeFirstLetter'
 import { watch } from 'vue'
 import RadarChart from './RadarChart.vue'
 
+interface PageData {
+  sprite: string
+  species: string
+  types: {
+    name: string
+  }[]
+  flavorTexts: {
+    flavor: string
+  }[]
+  evYields: {
+    hp: number
+    attack: number
+    defense: number
+    speed: number
+    specialdefense: number
+    specialattack: number
+  }
+}
+
 const route = useRoute()
 const { result, loading, error, refetch } = useQuery(GET_POKEMON, {
   pokemonKey: route.params.pokemonKey
@@ -21,7 +40,19 @@ watch(
     })
   }
 )
-// const { sprite, species, types, evYields, key } = result.value.getPokemon
+
+// const chartCategories = ['HP', 'Attack', 'Defense', 'Speed', 'Sp. Def', 'Sp. Atk']
+// const chartSeries = {
+//   name: '',
+//   data: [
+//     evYields?.hp,
+//     evYields?.attack,
+//     evYields?.defense,
+//     evYields?.speed,
+//     evYields?.specialdefense,
+//     evYields?.specialattack
+//   ]
+// }
 </script>
 
 <template>
@@ -38,12 +69,31 @@ watch(
       <div class="DescriptionSection">
         <h4>POKÉDEX ENTRY</h4>
         <p>
-          {{ result.getPokemon.flavorTexts[0].flavor }}
+          {{ result.getPokemon.flavorTexts?.[0].flavor }}
         </p>
       </div>
       <div class="ChartSection">
         <h4>EV YIELDS</h4>
-        <RadarChart />
+        <RadarChart
+          v-if="result"
+          chart-id="pokemonEvYieldsChart"
+          :series="[
+            {
+              name: '',
+              data: [
+                result.getPokemon.evYields?.hp,
+                result.getPokemon.evYields?.attack,
+                result.getPokemon.evYields?.defense,
+                result.getPokemon.evYields?.speed,
+                result.getPokemon.evYields?.specialdefense,
+                result.getPokemon.evYields?.specialattack
+              ]
+            }
+          ]"
+          :categories="['HP', 'Attack', 'Defense', 'Speed', 'Sp. Def', 'Sp. Atk']"
+          height="300"
+          width="300"
+        />
       </div>
     </div>
   </div>
