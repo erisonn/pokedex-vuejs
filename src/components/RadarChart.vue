@@ -18,8 +18,7 @@ const options = {
   },
   yaxis: {
     show: false,
-    stepSize: 7,
-    min: -3,
+    min: -1,
     max: 3
   },
   xaxis: {
