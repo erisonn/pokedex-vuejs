@@ -16,7 +16,7 @@ const props = defineProps<Props>()
 
 <style scoped lang="scss">
 .CardList {
-  width: 1100px;
+  width: 1000px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;

@@ -12,7 +12,7 @@ const { result, loading, error } = useQuery(GET_POKEMONS_QUERY)
   <div class="ListPokemonPage">
     <AppLoading v-if="loading" />
     <p v-else-if="error">Oops! Something went wrong.</p>
-    <div v-else class="ListPokemonPage-ContentWrapper">
+    <div v-else class="ContentWrapper">
       <CardList :pokemons="result.getAllPokemon" />
       <PokemonCardBig v-if="$route.params.pokemonKey" />
     </div>
@@ -21,10 +21,11 @@ const { result, loading, error } = useQuery(GET_POKEMONS_QUERY)
 
 <style scoped lang="scss">
 .ListPokemonPage {
-  .ListPokemonPage-ContentWrapper {
+  .ContentWrapper {
     padding-top: 50px;
     display: flex;
     justify-content: center;
+    align-items: flex-start;
   }
 }
 </style>

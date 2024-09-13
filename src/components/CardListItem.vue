@@ -21,13 +21,13 @@ const { sprite, species, types, key } = props.pokemon
 </script>
 
 <template>
-  <RouterLink :to="'/pokemon/' + key" class="CardList-Item">
-    <div class="CardList-Item-Container">
-      <div class="CardList-Item-ImgContainer">
+  <RouterLink :to="'/pokemon/' + key" class="CardListItem">
+    <div class="Container">
+      <div class="ImgContainer">
         <img loading="lazy" :src="sprite" aria-label="pokémon sprite" />
       </div>
-      <h4>Nº001</h4>
-      <h2>{{ capitalizeFirstLetter(species) }}</h2>
+      <h6>Nº001</h6>
+      <h4>{{ capitalizeFirstLetter(species) }}</h4>
       <TagList :tags="types" />
     </div>
   </RouterLink>
@@ -35,21 +35,24 @@ const { sprite, species, types, key } = props.pokemon
 
 <style scoped lang="scss">
 @import '/src/assets/main.scss';
-.CardList-Item {
-  width: 300px;
-  height: 200px;
-  margin: 40px 10px;
-  background-color: $color-white;
-  border-radius: 20px;
+.CardListItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 170px;
+  height: 230px;
+  margin: 0 10px 20px 10px;
+  background-color: $card-bg-color;
+  border: 1px solid $color-grey-transparent;
+  border-radius: 8px;
   text-align: center;
   box-shadow: $box-shadow;
   text-decoration: none;
-  .CardList-Item-Container {
-    transform: translateY(-55px);
-    .CardList-Item-ImgContainer {
+  .Container {
+    .ImgContainer {
       img {
-        height: 85px;
-        width: 85px;
+        height: 75px;
+        width: 75px;
       }
     }
   }

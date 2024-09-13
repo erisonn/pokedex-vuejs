@@ -28,19 +28,23 @@ watch(
   <div class="PokemonCardBig">
     <AppLoading v-if="loading" />
     <p v-else-if="error">Oops! Something went wrong.</p>
-    <div v-else class="PokemonCardBig-Container">
-      <div class="PokemonCardBig-SpriteContainer">
+    <div v-else class="Container">
+      <div class="SpriteContainer">
         <img :src="result.getPokemon.sprite" />
       </div>
-      <h4>Nº001</h4>
-      <h2>{{ capitalizeFirstLetter(result.getPokemon.species) }}</h2>
+      <h6>Nº001</h6>
+      <h4>{{ capitalizeFirstLetter(result.getPokemon.species) }}</h4>
       <TagList :tags="result.getPokemon.types" />
-      <h3>POKÉDEX ENTRY</h3>
-      <p>
-        {{ result.getPokemon.flavorTexts[0].flavor }}
-      </p>
-      <h3>EV YIELDS</h3>
-      <RadarChart />
+      <div class="DescriptionSection">
+        <h4>POKÉDEX ENTRY</h4>
+        <p>
+          {{ result.getPokemon.flavorTexts[0].flavor }}
+        </p>
+      </div>
+      <div class="ChartSection">
+        <h4>EV YIELDS</h4>
+        <RadarChart />
+      </div>
     </div>
   </div>
 </template>
@@ -52,20 +56,25 @@ watch(
   display: flex;
   justify-content: center;
   position: sticky;
-  top: 150px;
-  background-color: $color-white;
-  width: 500px;
+  top: 100px;
+  background-color: $card-bg-color;
+  width: 350px;
   height: 750px;
   padding: 15px 40px;
-  border-radius: 20px;
+  border: 1px solid $color-grey-transparent;
+  border-radius: 8px;
   box-shadow: $box-shadow;
-  .PokemonCardBig-Container {
-    transform: translateY(-100px);
+  .Container {
+    padding: 20px;
     text-align: center;
-  }
-  .PokemonCardBig-SpriteContainer {
-    img {
-      height: 200px;
+    .SpriteContainer {
+      img {
+        height: 150px;
+      }
+    }
+    .DescriptionSection,
+    .ChartSection {
+      margin-top: 15px;
     }
   }
 }

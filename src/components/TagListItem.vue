@@ -16,17 +16,19 @@ const theme = ref({
 </script>
 
 <template>
-  <div class="TagList-Item">
-    {{ tag.name.toUpperCase() }}
-  </div>
+  <span>
+    <div class="TagListItem">
+      {{ tag.name.toUpperCase() }}
+    </div>
+  </span>
 </template>
 
 <style scoped lang="scss">
 @import '/src/assets/main.scss';
-.TagList-Item {
+.TagListItem {
   margin-right: 8px;
-  padding: 8px 15px;
-  border-radius: 8px;
+  padding: 4px 8px;
+  border-radius: 4px;
   background-color: v-bind('theme.color');
   color: $color-grey-dark;
   width: max-content;
