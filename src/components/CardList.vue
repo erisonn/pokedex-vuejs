@@ -6,11 +6,12 @@ interface Props {
   pokemons: Pokemon[]
 }
 const props = defineProps<Props>()
+const { pokemons } = props
 </script>
 
 <template>
   <div class="CardList">
-    <CardListItem v-for="pokemon of props.pokemons" :key="pokemon.key" :pokemon="pokemon" />
+    <CardListItem v-for="pokemon of pokemons" :key="pokemon.key" :pokemon="pokemon" />
   </div>
 </template>
 
