@@ -39,7 +39,7 @@ watch(
   top: 100px;
   background-color: $card-bg-color;
   width: 350px;
-  height: 750px;
+  height: 800px;
   padding: 15px 40px;
   border: 1px solid $color-grey-transparent;
   border-radius: 8px;
