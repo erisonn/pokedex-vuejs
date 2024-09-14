@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import { toRefs } from 'vue'
 import CardListItem from './CardListItem.vue'
 import type { Pokemon } from './CardListItem.vue'
 
 interface Props {
   pokemons: Pokemon[]
 }
-const props = defineProps<Props>()
-const { pokemons } = toRefs(props)
+const { pokemons } = defineProps<Props>()
 </script>
 
 <template>

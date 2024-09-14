@@ -9,8 +9,7 @@ interface Props {
     componentProps: any
   }[]
 }
-const props = defineProps<Props>()
-const { tabs } = props
+const { tabs } = defineProps<Props>()
 
 const allTabs = ref(tabs)
 const activeTab = ref(tabs[0])

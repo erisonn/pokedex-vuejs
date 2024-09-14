@@ -8,8 +8,7 @@ interface Props {
   }
 }
 
-const props = defineProps<Props>()
-const { tag } = props
+const { tag } = defineProps<Props>()
 const theme = ref({
   color: colors[tag.name.toLowerCase()]
 })

@@ -16,8 +16,8 @@ interface Props {
   pokemon: Pokemon
 }
 
-const props = defineProps<Props>()
-const { sprite, species, types, key } = props.pokemon
+const { pokemon } = defineProps<Props>()
+const { sprite, species, types, key } = pokemon
 </script>
 
 <template>
