@@ -19,6 +19,7 @@ const { chartId, minValue, maxValue, categories, width, height, series } = defin
 const options = computed(() => {
   return {
     chart: {
+      fontFamily: 'Roboto Slab, serif',
       id: chartId,
       animations: {
         dynamicAnimation: {
@@ -41,7 +42,7 @@ const options = computed(() => {
       colors: ['#4ecdc4']
     },
     markers: {
-      size: 3,
+      size: 0,
       colors: '#4ecdc4',
       strokeColors: '#4ecdc4'
     }
@@ -62,11 +63,13 @@ const options = computed(() => {
 </template>
 
 <style scoped lang="scss">
+@import '/src/assets/main.scss';
 .RadarChart {
   display: flex;
   justify-content: center;
-  .apexcharts-tooltip {
-    display: none !important;
+  .vue-apexcharts {
+    background-color: $color-white;
+    border-radius: 8px;
   }
 }
 </style>
