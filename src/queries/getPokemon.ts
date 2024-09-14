@@ -17,6 +17,14 @@ export const GET_POKEMON = gql`
         specialdefense
         speed
       }
+      baseStats {
+        attack
+        defense
+        hp
+        specialattack
+        specialdefense
+        speed
+      }
       flavorTexts {
         game
         flavor

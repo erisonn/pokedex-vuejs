@@ -2,6 +2,17 @@
 import { capitalizeFirstLetter } from '@/helpers/capitalizeFirstLetter'
 import RadarChart from './RadarChart.vue'
 import TagList from './TagList.vue'
+import AppTabs from './AppTabs.vue'
+import { shallowRef } from 'vue'
+
+interface PokemonStats {
+  hp: number
+  attack: number
+  defense: number
+  speed: number
+  specialdefense: number
+  specialattack: number
+}
 
 interface Props {
   data: {
@@ -13,32 +24,77 @@ interface Props {
     flavorTexts: {
       flavor: string
     }[]
-    evYields: {
-      hp: number
-      attack: number
-      defense: number
-      speed: number
-      specialdefense: number
-      specialattack: number
-    }
+    evYields: PokemonStats
+    baseStats: PokemonStats
   }
 }
 
 const props = defineProps<Props>()
-const { sprite, species, types, flavorTexts, evYields } = props.data
+const { sprite, species, types, flavorTexts, evYields, baseStats } = props.data
 
-const categories = ['HP', 'Attack', 'Defense', 'Speed', 'Sp. Def', 'Sp. Atk']
-const series = [
+const evYieldsData = {
+  categories: ['HP', 'Attack', 'Defense', 'Speed', 'Sp. Def', 'Sp. Atk'],
+  series: [
+    {
+      name: '',
+      data: [
+        evYields.hp,
+        evYields.attack,
+        evYields.defense,
+        evYields.speed,
+        evYields.specialdefense,
+        evYields.specialattack
+      ]
+    }
+  ]
+}
+
+const baseStatsData = {
+  categories: ['HP', 'Attack', 'Defense', 'Speed', 'Sp. Def', 'Sp. Atk'],
+  series: [
+    {
+      name: '',
+      data: [
+        baseStats.hp,
+        baseStats.attack,
+        baseStats.defense,
+        baseStats.speed,
+        baseStats.specialdefense,
+        baseStats.specialattack
+      ]
+    }
+  ]
+}
+
+// TODO: ADD OTHER TABS
+const TABS_STATES = [
   {
-    name: '',
-    data: [
-      evYields.hp,
-      evYields.attack,
-      evYields.defense,
-      evYields.speed,
-      evYields.specialdefense,
-      evYields.specialattack
-    ]
+    title: 'STATS',
+    label: 'stats',
+    component: shallowRef(RadarChart),
+    componentProps: {
+      'chart-id': 'pokemonStatsChart',
+      series: baseStatsData.series,
+      categories: baseStatsData.categories,
+      height: '300',
+      width: '300',
+      minValue: -80,
+      maxValue: 255
+    }
+  },
+  {
+    title: 'EV YIELDS',
+    label: 'evYields',
+    component: shallowRef(RadarChart),
+    componentProps: {
+      'chart-id': 'pokemonEvYieldsChart',
+      series: evYieldsData.series,
+      categories: evYieldsData.categories,
+      height: '300',
+      width: '300',
+      minValue: -1,
+      maxValue: 3
+    }
   }
 ]
 </script>
@@ -57,21 +113,13 @@ const series = [
         {{ flavorTexts[0].flavor }}
       </p>
     </div>
-    <div class="ChartSection">
-      <h4>EV YIELDS</h4>
-      <RadarChart
-        chart-id="pokemonEvYieldsChart"
-        :series="series"
-        :categories="categories"
-        height="300"
-        width="300"
-      />
-    </div>
+    <AppTabs :tabs="TABS_STATES" />
   </div>
 </template>
 
 <style scoped lang="scss">
 .PokemonCardBigContent {
+  min-width: 310px;
   padding: 20px;
   text-align: center;
   .SpriteContainer {
