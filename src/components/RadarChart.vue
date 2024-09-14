@@ -23,6 +23,10 @@ const options = {
   },
   xaxis: {
     categories: categories
+  },
+  theme: {
+    mode: 'light',
+    palette: 'palette4'
   }
 }
 </script>
