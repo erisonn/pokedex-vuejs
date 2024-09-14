@@ -29,8 +29,8 @@ const theme = ref({
   margin-right: 8px;
   padding: 4px 8px;
   border-radius: 4px;
-  background-color: v-bind('theme.color');
-  color: $color-grey-dark;
+  background-color: v-bind('theme.color.color');
+  color: v-bind('theme.color.fontColor');
   width: max-content;
 }
 </style>
