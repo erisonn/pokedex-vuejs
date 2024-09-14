@@ -29,11 +29,18 @@ interface Props {
   }
 }
 
-const props = defineProps<Props>()
-const { sprite, species, types, flavorTexts, evYields, baseStats } = props.data
+const { data } = defineProps<Props>()
+const { sprite, species, types, flavorTexts, evYields, baseStats } = data
 
 const evYieldsData = {
-  categories: ['HP', 'Attack', 'Defense', 'Speed', 'Sp. Def', 'Sp. Atk'],
+  categories: [
+    evYields.hp + ' HP',
+    evYields.attack + ' Attack',
+    evYields.defense + ' Defense',
+    evYields.speed + ' Speed',
+    evYields.specialdefense + ' Sp. Def',
+    evYields.specialattack + ' Sp. Atk'
+  ],
   series: [
     {
       name: '',
@@ -50,7 +57,14 @@ const evYieldsData = {
 }
 
 const baseStatsData = {
-  categories: ['HP', 'Attack', 'Defense', 'Speed', 'Sp. Def', 'Sp. Atk'],
+  categories: [
+    baseStats.hp + ' HP',
+    baseStats.attack + ' Attack',
+    baseStats.defense + ' Defense',
+    baseStats.speed + ' Speed',
+    baseStats.specialdefense + ' Sp. Def',
+    baseStats.specialattack + ' Sp. Atk'
+  ],
   series: [
     {
       name: '',
