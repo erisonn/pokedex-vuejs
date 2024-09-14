@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
 interface Props {
   chartId: string
   categories: string[]
@@ -8,27 +10,43 @@ interface Props {
   }[]
   height: string
   width: string
+  minValue: number
+  maxValue: number
 }
-const props = defineProps<Props>()
-const { chartId, categories, series, height, width } = props
+const { chartId, minValue, maxValue, categories, width, height, series } = defineProps<Props>()
+
 // categories and series data array must be in the same order
-const options = {
-  chart: {
-    id: chartId
-  },
-  yaxis: {
-    show: false,
-    min: -1,
-    max: 3
-  },
-  xaxis: {
-    categories: categories
-  },
-  theme: {
-    mode: 'light',
-    palette: 'palette4'
+const options = computed(() => {
+  return {
+    chart: {
+      id: chartId,
+      animations: {
+        dynamicAnimation: {
+          enabled: false
+        }
+      }
+    },
+    yaxis: {
+      show: false,
+      min: minValue,
+      max: maxValue
+    },
+    xaxis: {
+      categories: categories
+    },
+    stroke: {
+      colors: ['#4ecdc4']
+    },
+    fill: {
+      colors: ['#4ecdc4']
+    },
+    markers: {
+      size: 3,
+      colors: '#4ecdc4',
+      strokeColors: '#4ecdc4'
+    }
   }
-}
+})
 </script>
 
 <template>
