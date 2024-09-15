@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import theme from '../assets/scss/variables.module.scss'
 
 interface Props {
   chartId: string
@@ -36,15 +37,15 @@ const options = computed(() => {
       categories: categories
     },
     stroke: {
-      colors: ['#4ecdc4']
+      colors: [theme.COLOR_GREEN_LIGHT]
     },
     fill: {
-      colors: ['#4ecdc4']
+      colors: [theme.COLOR_GREEN_LIGHT]
     },
     markers: {
       size: 0,
-      colors: '#4ecdc4',
-      strokeColors: '#4ecdc4'
+      colors: [theme.COLOR_GREEN_LIGHT],
+      strokeColors: [theme.COLOR_GREEN_LIGHT]
     }
   }
 })
