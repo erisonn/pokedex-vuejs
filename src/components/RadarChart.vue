@@ -20,7 +20,7 @@ const { chartId, minValue, maxValue, categories, width, height, series } = defin
 const options = computed(() => {
   return {
     chart: {
-      fontFamily: 'Roboto Slab, serif',
+      fontFamily: theme.FONT_FAMILY,
       id: chartId,
       animations: {
         dynamicAnimation: {
