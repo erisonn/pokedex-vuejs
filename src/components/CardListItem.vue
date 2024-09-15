@@ -34,7 +34,6 @@ const { sprite, species, types, key } = pokemon
 </template>
 
 <style scoped lang="scss">
-@import '/src/assets/main.scss';
 .CardListItem {
   display: flex;
   align-items: center;

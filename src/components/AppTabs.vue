@@ -34,7 +34,6 @@ const changeTab = (newTab: any) => {
 </template>
 
 <style scoped lang="scss">
-@import '/src/assets/main.scss';
 .Tabs {
   margin-bottom: 15px;
   button {

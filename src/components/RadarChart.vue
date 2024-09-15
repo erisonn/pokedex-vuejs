@@ -63,7 +63,6 @@ const options = computed(() => {
 </template>
 
 <style scoped lang="scss">
-@import '/src/assets/main.scss';
 .RadarChart {
   display: flex;
   justify-content: center;

@@ -30,7 +30,6 @@ watch(
 </template>
 
 <style scoped lang="scss">
-@import '/src/assets/main.scss';
 .PokemonCardBig {
   box-sizing: border-box;
   display: flex;

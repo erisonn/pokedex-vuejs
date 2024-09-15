@@ -5,7 +5,6 @@
 </template>
 
 <style scoped lang="scss">
-@import '/src/assets/main.scss';
 .AppHeader {
   border-bottom: 1px solid $color-grey-transparent;
 }

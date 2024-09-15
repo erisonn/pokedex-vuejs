@@ -23,7 +23,6 @@ const theme = ref({
 </template>
 
 <style scoped lang="scss">
-@import '/src/assets/main.scss';
 .TagListItem {
   margin-right: 8px;
   padding: 4px 8px;
