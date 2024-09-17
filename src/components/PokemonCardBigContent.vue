@@ -4,6 +4,9 @@ import RadarChart from './RadarChart.vue'
 import TagList from './TagList.vue'
 import AppTabs from './AppTabs.vue'
 import { shallowRef } from 'vue'
+import HeatMapChart from './HeatMapChart.vue'
+import { buildHeatMapChartSeries } from '@/helpers/buildHeatMapChartSeries'
+import { type TypeMatchups } from '@/helpers/buildHeatMapChartSeries'
 
 interface PokemonStats {
   hp: number
@@ -18,9 +21,7 @@ interface Props {
   data: {
     sprite: string
     species: string
-    types: {
-      name: string
-    }[]
+    types: TypeMatchups[]
     flavorTexts: {
       flavor: string
     }[]
@@ -31,30 +32,6 @@ interface Props {
 
 const { data } = defineProps<Props>()
 const { sprite, species, types, flavorTexts, evYields, baseStats } = data
-
-const evYieldsData = {
-  categories: [
-    evYields.hp + ' HP',
-    evYields.attack + ' Attack',
-    evYields.defense + ' Defense',
-    evYields.speed + ' Speed',
-    evYields.specialdefense + ' Sp. Def',
-    evYields.specialattack + ' Sp. Atk'
-  ],
-  series: [
-    {
-      name: '',
-      data: [
-        evYields.hp,
-        evYields.attack,
-        evYields.defense,
-        evYields.speed,
-        evYields.specialdefense,
-        evYields.specialattack
-      ]
-    }
-  ]
-}
 
 const baseStatsData = {
   categories: [
@@ -75,6 +52,30 @@ const baseStatsData = {
         baseStats.speed,
         baseStats.specialdefense,
         baseStats.specialattack
+      ]
+    }
+  ]
+}
+
+const evYieldsData = {
+  categories: [
+    evYields.hp + ' HP',
+    evYields.attack + ' Attack',
+    evYields.defense + ' Defense',
+    evYields.speed + ' Speed',
+    evYields.specialdefense + ' Sp. Def',
+    evYields.specialattack + ' Sp. Atk'
+  ],
+  series: [
+    {
+      name: '',
+      data: [
+        evYields.hp,
+        evYields.attack,
+        evYields.defense,
+        evYields.speed,
+        evYields.specialdefense,
+        evYields.specialattack
       ]
     }
   ]
@@ -108,6 +109,15 @@ const TABS_STATES = [
       width: '300',
       minValue: -1,
       maxValue: 3
+    }
+  },
+  {
+    title: 'TYPE MATCHUP',
+    label: 'typeMatchup',
+    component: shallowRef(HeatMapChart),
+    componentProps: {
+      chartId: 'pokemonTypeMatchupsChart',
+      series: buildHeatMapChartSeries(types)
     }
   }
 ]
