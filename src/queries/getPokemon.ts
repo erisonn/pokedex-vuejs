@@ -8,6 +8,24 @@ export const GET_POKEMON = gql`
       key
       types {
         name
+        matchup {
+          attacking {
+            doubleEffectiveTypes
+            doubleResistedTypes
+            effectiveTypes
+            effectlessTypes
+            normalTypes
+            resistedTypes
+          }
+          defending {
+            doubleEffectiveTypes
+            doubleResistedTypes
+            effectiveTypes
+            effectlessTypes
+            normalTypes
+            resistedTypes
+          }
+        }
       }
       evYields {
         attack
