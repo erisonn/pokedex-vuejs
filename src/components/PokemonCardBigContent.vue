@@ -102,6 +102,7 @@ const TABS_STATES = [
     label: 'evYields',
     component: shallowRef(RadarChart),
     componentProps: {
+      // TODO: FIGURE OUT HOW TO TYPE THESE PROPS
       'chart-id': 'pokemonEvYieldsChart',
       series: evYieldsData.series,
       categories: evYieldsData.categories,

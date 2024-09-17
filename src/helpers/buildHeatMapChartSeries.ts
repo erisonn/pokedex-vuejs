@@ -1,3 +1,5 @@
+import { capitalizeFirstLetter } from './capitalizeFirstLetter'
+
 export interface TypeMatchups {
   name: string
   matchup: {
@@ -18,6 +20,7 @@ export interface FormatedTypeMatchups {
   }[]
 }
 
+// TODO: SPLIT THIS FUNCTION INTO SMALL FUNCTIONS
 export const buildHeatMapChartSeries = (typeMatchups: TypeMatchups[]) => {
   const formatedChartData = typeMatchups.reduce((acc, current) => {
     const formatedMatchups = Object.keys(current.matchup.attacking).map((matchups) => {
@@ -34,8 +37,8 @@ export const buildHeatMapChartSeries = (typeMatchups: TypeMatchups[]) => {
             if (matchupsCurrent.normalTypes) {
               const normalMatchups = matchupsCurrent.normalTypes.map((type) => {
                 return {
-                  x: type,
-                  y: 100
+                  x: current.name + ' → ' + capitalizeFirstLetter(type),
+                  y: 1
                 }
               })
               matchupsAcc.push(normalMatchups)
@@ -43,8 +46,8 @@ export const buildHeatMapChartSeries = (typeMatchups: TypeMatchups[]) => {
             if (matchupsCurrent.resistedTypes) {
               const resistedMatchups = matchupsCurrent.resistedTypes.map((type) => {
                 return {
-                  x: type,
-                  y: 50
+                  x: current.name + ' → ' + capitalizeFirstLetter(type),
+                  y: 0.5
                 }
               })
               matchupsAcc.push(resistedMatchups)
@@ -52,8 +55,8 @@ export const buildHeatMapChartSeries = (typeMatchups: TypeMatchups[]) => {
             if (matchupsCurrent.effectiveTypes) {
               const effectiveMatchups = matchupsCurrent.effectiveTypes.map((type) => {
                 return {
-                  x: type,
-                  y: 200
+                  x: current.name + ' → ' + capitalizeFirstLetter(type),
+                  y: 2
                 }
               })
               matchupsAcc.push(effectiveMatchups)
@@ -61,7 +64,7 @@ export const buildHeatMapChartSeries = (typeMatchups: TypeMatchups[]) => {
             if (matchupsCurrent.effectlessTypes) {
               const effectlessMatchups = matchupsCurrent.effectlessTypes.map((type) => {
                 return {
-                  x: type,
+                  x: current.name + ' → ' + capitalizeFirstLetter(type),
                   y: 0
                 }
               })

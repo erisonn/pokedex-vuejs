@@ -37,7 +37,7 @@ watch(
   position: sticky;
   top: 100px;
   background-color: $card-bg-color;
-  width: 350px;
+  width: 650px;
   height: 800px;
   padding: 15px 40px;
   border: 1px solid $color-grey-transparent;

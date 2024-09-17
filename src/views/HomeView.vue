@@ -43,6 +43,7 @@ useIntersectionObserver(infiniteScrollRef, ([{ isIntersecting }]) => {
       <CardList :pokemons="result.getAllPokemon" />
       <PokemonCardBig v-if="$route.params.pokemonKey" />
     </div>
+    <!-- TODO: FIX LOADING POSITIONING -->
     <AppLoading v-if="loading" />
     <p v-if="error">Oops! Something went wrong.</p>
     <div ref="infiniteScrollRef"></div>
