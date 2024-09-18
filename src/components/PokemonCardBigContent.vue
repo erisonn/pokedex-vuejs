@@ -113,12 +113,12 @@ const TABS_STATES = [
     }
   },
   {
-    title: 'TYPE MATCHUP',
-    label: 'typeMatchup',
+    title: 'ATTACKING DATA',
+    label: 'attackingData',
     component: shallowRef(HeatMapChart),
     componentProps: {
       chartId: 'pokemonTypeMatchupsChart',
-      series: buildHeatMapChartSeries(types),
+      series: buildHeatMapChartSeries(types, 'attacking'),
       width: 520,
       height: 300
     }

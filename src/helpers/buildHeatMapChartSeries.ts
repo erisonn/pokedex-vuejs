@@ -3,10 +3,7 @@ import { capitalizeFirstLetter } from './capitalizeFirstLetter'
 export interface TypeMatchups {
   name: string
   matchup: {
-    attacking: {
-      [key: string]: string[]
-    }
-    defending: {
+    [key: string]: {
       [key: string]: string[]
     }
   }
@@ -21,11 +18,11 @@ export interface FormatedTypeMatchups {
 }
 
 // TODO: SPLIT THIS FUNCTION INTO SMALL FUNCTIONS
-export const buildHeatMapChartSeries = (typeMatchups: TypeMatchups[]) => {
+export const buildHeatMapChartSeries = (typeMatchups: TypeMatchups[], key: string) => {
   const formatedChartData = typeMatchups.reduce((acc, current) => {
-    const formatedMatchups = Object.keys(current.matchup.attacking).map((matchups) => {
+    const formatedMatchups = Object.keys(current.matchup[key]).map((matchups) => {
       return {
-        [matchups]: current.matchup.attacking[matchups]
+        [matchups]: current.matchup[key][matchups]
       }
     })
 

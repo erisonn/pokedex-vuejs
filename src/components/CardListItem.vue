@@ -26,6 +26,7 @@ const { sprite, species, types, key } = pokemon
       <div class="ImgContainer">
         <img loading="lazy" :src="sprite" aria-label="pokémon sprite" />
       </div>
+      <!-- TODO: ADD REAL POKÉDEX NUMBER  -->
       <h6>Nº001</h6>
       <h4>{{ capitalizeFirstLetter(species) }}</h4>
       <TagList :tags="types" />
