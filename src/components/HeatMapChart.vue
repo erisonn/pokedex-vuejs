@@ -5,9 +5,11 @@ import { type FormatedTypeMatchups } from '@/helpers/buildHeatMapChartSeries'
 interface Props {
   chartId: string
   series: FormatedTypeMatchups
+  width: number
+  height: number
 }
 
-const { chartId, series } = defineProps<Props>()
+const { chartId, series, width, height } = defineProps<Props>()
 
 const options = {
   chart: {
@@ -57,6 +59,7 @@ const options = {
     enabled: false
   },
   legend: {
+    showForSingleSeries: true,
     onItemHover: {
       highlightDataSeries: false
     }
@@ -71,8 +74,8 @@ const options = {
       type="heatmap"
       :options="options"
       :series="options.series"
-      height="300"
-      width="520"
+      :height="height"
+      :width="width"
     ></apexchart>
   </div>
 </template>

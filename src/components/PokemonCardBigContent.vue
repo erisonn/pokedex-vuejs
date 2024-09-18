@@ -82,6 +82,7 @@ const evYieldsData = {
 }
 
 // TODO: ADD OTHER TABS
+// TODO: FIGURE OUT HOW TO TYPE THESE PROPS
 const TABS_STATES = [
   {
     title: 'STATS',
@@ -102,7 +103,6 @@ const TABS_STATES = [
     label: 'evYields',
     component: shallowRef(RadarChart),
     componentProps: {
-      // TODO: FIGURE OUT HOW TO TYPE THESE PROPS
       'chart-id': 'pokemonEvYieldsChart',
       series: evYieldsData.series,
       categories: evYieldsData.categories,
@@ -118,7 +118,9 @@ const TABS_STATES = [
     component: shallowRef(HeatMapChart),
     componentProps: {
       chartId: 'pokemonTypeMatchupsChart',
-      series: buildHeatMapChartSeries(types)
+      series: buildHeatMapChartSeries(types),
+      width: 520,
+      height: 300
     }
   }
 ]

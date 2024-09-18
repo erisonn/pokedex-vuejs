@@ -37,7 +37,7 @@ export const buildHeatMapChartSeries = (typeMatchups: TypeMatchups[]) => {
             if (matchupsCurrent.normalTypes) {
               const normalMatchups = matchupsCurrent.normalTypes.map((type) => {
                 return {
-                  x: current.name + ' → ' + capitalizeFirstLetter(type),
+                  x: 'v/s ' + capitalizeFirstLetter(type),
                   y: 1
                 }
               })
@@ -46,7 +46,7 @@ export const buildHeatMapChartSeries = (typeMatchups: TypeMatchups[]) => {
             if (matchupsCurrent.resistedTypes) {
               const resistedMatchups = matchupsCurrent.resistedTypes.map((type) => {
                 return {
-                  x: current.name + ' → ' + capitalizeFirstLetter(type),
+                  x: 'v/s ' + capitalizeFirstLetter(type),
                   y: 0.5
                 }
               })
@@ -55,7 +55,7 @@ export const buildHeatMapChartSeries = (typeMatchups: TypeMatchups[]) => {
             if (matchupsCurrent.effectiveTypes) {
               const effectiveMatchups = matchupsCurrent.effectiveTypes.map((type) => {
                 return {
-                  x: current.name + ' → ' + capitalizeFirstLetter(type),
+                  x: 'v/s ' + capitalizeFirstLetter(type),
                   y: 2
                 }
               })
@@ -64,7 +64,7 @@ export const buildHeatMapChartSeries = (typeMatchups: TypeMatchups[]) => {
             if (matchupsCurrent.effectlessTypes) {
               const effectlessMatchups = matchupsCurrent.effectlessTypes.map((type) => {
                 return {
-                  x: current.name + ' → ' + capitalizeFirstLetter(type),
+                  x: 'v/s ' + capitalizeFirstLetter(type),
                   y: 0
                 }
               })
