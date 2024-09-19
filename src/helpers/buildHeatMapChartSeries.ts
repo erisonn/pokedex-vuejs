@@ -17,6 +17,22 @@ export interface FormatedTypeMatchups {
   }[]
 }
 
+const getMatchupEffectivenessValueFromText = (text: string) => {
+  switch (text) {
+    case 'resistedTypes':
+      return 0.5
+
+    case 'effectiveTypes':
+      return 2
+
+    case 'effectlessTypes':
+      return 0
+
+    default:
+      return 1
+  }
+}
+
 const buildFormatedMatchupsToSeries = (
   formatedMatchups: {
     [x: string]: string[]
@@ -25,41 +41,15 @@ const buildFormatedMatchupsToSeries = (
   const series = formatedMatchups
     .reduce(
       (matchupsAcc, matchupsCurrent) => {
-        if (matchupsCurrent.normalTypes) {
-          const normalMatchups = matchupsCurrent.normalTypes.map((type) => {
+        const { __typename, ...current } = matchupsCurrent
+        for (const matchup in current) {
+          const formatedMatchup = current[matchup].map((type) => {
             return {
               x: 'v/s ' + capitalizeFirstLetter(type),
-              y: 1
+              y: getMatchupEffectivenessValueFromText(matchup)
             }
           })
-          matchupsAcc.push(normalMatchups)
-        }
-        if (matchupsCurrent.resistedTypes) {
-          const resistedMatchups = matchupsCurrent.resistedTypes.map((type) => {
-            return {
-              x: 'v/s ' + capitalizeFirstLetter(type),
-              y: 0.5
-            }
-          })
-          matchupsAcc.push(resistedMatchups)
-        }
-        if (matchupsCurrent.effectiveTypes) {
-          const effectiveMatchups = matchupsCurrent.effectiveTypes.map((type) => {
-            return {
-              x: 'v/s ' + capitalizeFirstLetter(type),
-              y: 2
-            }
-          })
-          matchupsAcc.push(effectiveMatchups)
-        }
-        if (matchupsCurrent.effectlessTypes) {
-          const effectlessMatchups = matchupsCurrent.effectlessTypes.map((type) => {
-            return {
-              x: 'v/s ' + capitalizeFirstLetter(type),
-              y: 0
-            }
-          })
-          matchupsAcc.push(effectlessMatchups)
+          matchupsAcc.push(formatedMatchup)
         }
         return matchupsAcc
       },
