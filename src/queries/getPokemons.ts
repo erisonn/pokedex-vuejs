@@ -6,6 +6,7 @@ export const GET_POKEMONS_QUERY = gql`
       sprite
       species
       key
+      num
       types {
         name
       }

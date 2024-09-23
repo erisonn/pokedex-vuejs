@@ -6,6 +6,7 @@ export const GET_POKEMON = gql`
       sprite
       species
       key
+      num
       types {
         name
         matchup {

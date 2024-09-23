@@ -2,11 +2,13 @@
 import { RouterLink } from 'vue-router'
 import TagList from './TagList.vue'
 import { capitalizeFirstLetter } from '@/helpers/capitalizeFirstLetter'
+import { addLeadingZerosToNumber } from '@/helpers/addLeadingZerosToNumber'
 
 export interface Pokemon {
   sprite: string
   species: string
   key: string
+  num: number
   types: {
     name: string
   }[]
@@ -17,7 +19,7 @@ interface Props {
 }
 
 const { pokemon } = defineProps<Props>()
-const { sprite, species, types, key } = pokemon
+const { sprite, species, types, key, num } = pokemon
 </script>
 
 <template>
@@ -26,8 +28,7 @@ const { sprite, species, types, key } = pokemon
       <div class="ImgContainer">
         <img loading="lazy" :src="sprite" aria-label="pokémon sprite" />
       </div>
-      <!-- TODO: ADD REAL POKÉDEX NUMBER  -->
-      <h6>Nº001</h6>
+      <h6>{{ 'Nº' + addLeadingZerosToNumber(num, 4) }}</h6>
       <h4>{{ capitalizeFirstLetter(species) }}</h4>
       <TagList :tags="types" />
     </div>

@@ -7,6 +7,7 @@ import { shallowRef } from 'vue'
 import HeatMapChart from './HeatMapChart.vue'
 import { buildHeatMapChartSeries } from '@/helpers/buildHeatMapChartSeries'
 import { type TypeMatchups } from '@/helpers/buildHeatMapChartSeries'
+import { addLeadingZerosToNumber } from '@/helpers/addLeadingZerosToNumber'
 
 interface PokemonStats {
   hp: number
@@ -19,6 +20,7 @@ interface PokemonStats {
 
 interface Props {
   data: {
+    num: number
     sprite: string
     species: string
     types: TypeMatchups[]
@@ -31,7 +33,7 @@ interface Props {
 }
 
 const { data } = defineProps<Props>()
-const { sprite, species, types, flavorTexts, evYields, baseStats } = data
+const { sprite, species, types, flavorTexts, evYields, baseStats, num } = data
 
 const baseStatsData = {
   categories: [
@@ -131,7 +133,7 @@ const TABS_STATES = [
     <div class="SpriteContainer">
       <img :src="sprite" />
     </div>
-    <h6>Nº001</h6>
+    <h6>{{ 'Nº' + addLeadingZerosToNumber(num, 4) }}</h6>
     <h4>{{ capitalizeFirstLetter(species) }}</h4>
     <TagList :tags="types" />
     <div class="DescriptionSection">
