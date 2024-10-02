@@ -83,8 +83,6 @@ const evYieldsData = {
   ]
 }
 
-// TODO: ADD OTHER TABS
-// TODO: FIGURE OUT HOW TO TYPE THESE PROPS
 const TABS_STATES = [
   {
     title: 'STATS',
@@ -124,12 +122,18 @@ const TABS_STATES = [
       width: 520,
       height: 300
     }
+  },
+  {
+    title: 'EVOLUTIONS',
+    label: 'evolutions',
+    component: null,
+    componentProps: null
   }
 ]
 </script>
 
 <template>
-  <div class="PokemonCardBigContent">
+  <div class="PokemonViewContent">
     <div class="SpriteContainer">
       <img :src="sprite" />
     </div>
@@ -147,9 +151,7 @@ const TABS_STATES = [
 </template>
 
 <style scoped lang="scss">
-.PokemonCardBigContent {
-  min-width: 310px;
-  padding: 20px;
+.PokemonViewContent {
   text-align: center;
   .SpriteContainer {
     img {

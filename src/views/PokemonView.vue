@@ -2,9 +2,9 @@
 import { GET_POKEMON } from '@/queries/getPokemon'
 import { useQuery } from '@vue/apollo-composable'
 import { useRoute } from 'vue-router'
-import AppLoading from './AppLoading.vue'
+import AppLoading from '../components/AppLoading.vue'
 import { watch } from 'vue'
-import PokemonCardBigContent from './PokemonCardBigContent.vue'
+import PokemonCardBigContent from '../components/PokemonViewContent.vue'
 
 const route = useRoute()
 const { result, loading, error, refetch } = useQuery(GET_POKEMON, {
@@ -22,7 +22,7 @@ watch(
 </script>
 
 <template>
-  <div class="PokemonCardBig">
+  <div class="PokemonView">
     <AppLoading v-if="loading" />
     <p v-else-if="error">Oops! Something went wrong.</p>
     <PokemonCardBigContent v-else :data="result.getPokemon" />
@@ -30,18 +30,9 @@ watch(
 </template>
 
 <style scoped lang="scss">
-.PokemonCardBig {
-  box-sizing: border-box;
+.PokemonView {
+  margin-top: 50px;
   display: flex;
   justify-content: center;
-  position: sticky;
-  top: 100px;
-  background-color: $card-bg-color;
-  width: 650px;
-  height: 800px;
-  padding: 15px 40px;
-  border: 1px solid $color-grey-transparent;
-  border-radius: 8px;
-  box-shadow: $box-shadow;
 }
 </style>
