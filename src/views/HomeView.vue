@@ -3,7 +3,6 @@ import { useQuery } from '@vue/apollo-composable'
 import { useIntersectionObserver } from '@vueuse/core'
 import { ref } from 'vue'
 import CardList from '@/components/CardList.vue'
-import PokemonCardBig from '@/components/PokemonCardBig.vue'
 import AppLoading from '@/components/AppLoading.vue'
 import { GET_POKEMONS_QUERY } from '@/queries/getPokemons'
 
@@ -18,7 +17,7 @@ const loadMorePokemon = () => {
   if (!result.value) return
   fetchMore({
     variables: {
-      offset: result.value?.getAllPokemon.length + 93
+      offset: result.value?.getAllPokemon.length + 93 // offset starts at 93 to skip all CAP Pokémon, PokéStar Pokémon, Missingno, and 'M (00)
     },
     updateQuery: (previousResult, { fetchMoreResult }) => {
       if (!fetchMoreResult) return previousResult
@@ -41,9 +40,7 @@ useIntersectionObserver(infiniteScrollRef, ([{ isIntersecting }]) => {
   <div class="ListPokemonPage">
     <div v-if="result" class="ContentWrapper">
       <CardList :pokemons="result.getAllPokemon" />
-      <PokemonCardBig v-if="$route.params.pokemonKey" />
     </div>
-    <!-- TODO: FIX LOADING POSITIONING -->
     <AppLoading v-if="loading" />
     <p v-if="error">Oops! Something went wrong.</p>
     <div ref="infiniteScrollRef"></div>

@@ -44,6 +44,7 @@ const changeTab = (newTab: any) => {
     font-size: 12px;
     font-weight: bold;
     color: $color-grey-light;
+    cursor: pointer;
   }
   .active {
     background-color: $color-green-light;

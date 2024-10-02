@@ -48,6 +48,15 @@ export const GET_POKEMON = gql`
         game
         flavor
       }
+      evolutions {
+        sprite
+        species
+        key
+        num
+        types {
+          name
+        }
+      }
     }
   }
 `
