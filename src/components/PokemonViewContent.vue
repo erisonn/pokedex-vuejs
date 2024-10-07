@@ -8,6 +8,8 @@ import HeatMapChart from './HeatMapChart.vue'
 import { buildHeatMapChartSeries } from '@/helpers/buildHeatMapChartSeries'
 import { type TypeMatchups } from '@/helpers/buildHeatMapChartSeries'
 import { addLeadingZerosToNumber } from '@/helpers/addLeadingZerosToNumber'
+import type { Pokemon } from './CardListItem.vue'
+import CardList from './CardList.vue'
 
 interface PokemonStats {
   hp: number
@@ -20,6 +22,7 @@ interface PokemonStats {
 
 interface Props {
   data: {
+    evolutions: Pokemon[]
     num: number
     sprite: string
     species: string
@@ -33,7 +36,7 @@ interface Props {
 }
 
 const { data } = defineProps<Props>()
-const { sprite, species, types, flavorTexts, evYields, baseStats, num } = data
+const { sprite, species, types, flavorTexts, evYields, baseStats, num, evolutions } = data
 
 const baseStatsData = {
   categories: [
@@ -122,12 +125,6 @@ const TABS_STATES = [
       width: 520,
       height: 300
     }
-  },
-  {
-    title: 'EVOLUTIONS',
-    label: 'evolutions',
-    component: null,
-    componentProps: null
   }
 ]
 </script>
@@ -147,6 +144,10 @@ const TABS_STATES = [
       </p>
     </div>
     <AppTabs :tabs="TABS_STATES" />
+    <div v-if="evolutions">
+      <h4>EVOLUTIONS</h4>
+      <CardList :pokemons="evolutions" />
+    </div>
   </div>
 </template>
 

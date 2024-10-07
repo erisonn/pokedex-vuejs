@@ -4,7 +4,7 @@ import { useQuery } from '@vue/apollo-composable'
 import { useRoute } from 'vue-router'
 import AppLoading from '../components/AppLoading.vue'
 import { watch } from 'vue'
-import PokemonCardBigContent from '../components/PokemonViewContent.vue'
+import PokemonViewContent from '../components/PokemonViewContent.vue'
 
 const route = useRoute()
 const { result, loading, error, refetch } = useQuery(GET_POKEMON, {
@@ -25,7 +25,7 @@ watch(
   <div class="PokemonView">
     <AppLoading v-if="loading" />
     <p v-else-if="error">Oops! Something went wrong.</p>
-    <PokemonCardBigContent v-else :data="result.getPokemon" />
+    <PokemonViewContent v-else :data="result.getPokemon" />
   </div>
 </template>
 

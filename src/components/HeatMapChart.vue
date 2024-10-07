@@ -79,3 +79,10 @@ const options = {
     ></apexchart>
   </div>
 </template>
+
+<style lang="scss">
+.HeatMapChart {
+  display: flex;
+  justify-content: center;
+}
+</style>

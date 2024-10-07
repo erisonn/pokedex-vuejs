@@ -34,21 +34,24 @@ const changeTab = (newTab: any) => {
 </template>
 
 <style scoped lang="scss">
-.Tabs {
+.AppTabs {
   margin-bottom: 15px;
-  button {
-    border: 1px solid $color-grey-transparent;
-    border-radius: 4px;
-    padding: 8px;
-    margin-right: 8px;
-    font-size: 12px;
-    font-weight: bold;
-    color: $color-grey-light;
-    cursor: pointer;
-  }
-  .active {
-    background-color: $color-green-light;
-    color: $color-white;
+  .Tabs {
+    margin-bottom: 15px;
+    button {
+      border: 1px solid $color-grey-transparent;
+      border-radius: 4px;
+      padding: 8px;
+      margin-right: 8px;
+      font-size: 12px;
+      font-weight: bold;
+      color: $color-grey-light;
+      cursor: pointer;
+    }
+    .active {
+      background-color: $color-green-light;
+      color: $color-white;
+    }
   }
 }
 </style>
