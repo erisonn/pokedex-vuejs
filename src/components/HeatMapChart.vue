@@ -31,25 +31,25 @@ const options = {
             from: 0.5,
             to: 0.5,
             name: 'Not very effective (50%)',
-            color: '#a40000'
+            color: theme.COLOR_NOT_VERY_EFFECTIVE
           },
           {
             from: 0,
             to: 0,
             name: 'No effect (0%)',
-            color: '#2e3436'
+            color: theme.COLOR_NO_EFFECT
           },
           {
             from: 1,
             to: 1,
             name: 'Normal (100%)',
-            color: '#cfcfcf'
+            color: theme.COLOR_NORMAL
           },
           {
             from: 2,
             to: 2,
             name: 'Super effective (200%)',
-            color: '#4e9a06'
+            color: theme.COLOR_SUPER_EFFECTIVE
           }
         ]
       }
